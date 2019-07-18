@@ -7,14 +7,99 @@ Fork and clone this repo. On your fork, answer and commit the follow questions. 
 
 a) Define an enumeration called `iOSDeviceType` with member values `iPhone`, `iPad`, `iWatch`. Create a variable called `myDevice` and assign it one member value.
 
+```swift
+enum iOSDeviceType {
+case iPhone
+case iPad
+case iWatch
+}
+
+var myDevice = iOSDeviceType.iPhone
+```
+
 b) Adjust your code above so that `iPhone` and `iPad` have associated values of type String which represents the model number, eg: `iPhone("6 Plus")`. Use a switch case and let syntax to print out the model number of each device.
 
+```swift
+var iphoneModel = "5S"
+var ipadModel = "mini 5"
+var iwatchModel = "3"
 
+enum iOSDeviceType {
+case iPhone(String)
+case iPad(String)
+case iWatch(String)
+
+    func printModel() {
+        switch self {
+        case .iPhone:
+            print(iphoneModel)
+        case .iPad:
+            print(ipadModel)
+        case .iWatch:
+            print(iwatchModel)
+        }
+
+    }
+
+}
+
+let myDevice = iOSDeviceType.iPhone(iphoneModel)
+print(myDevice)
+```
 ## Question 2
 
 a) Write an enum called `Shape` and give it cases for `triangle`, `rectangle`, `square`, `pentagon`, and `hexagon`.
 
+```swift
+enum Shape {
+case triangle(Int)
+case rectangle(Int)
+case square(Int)
+case pentagon(Int)
+case hexagon(Int)
+}
+
+let myFavoritePolygon = Shape.triangle
+```
+
 b) Write a method inside `Shape` that returns how many sides the shape has. Create a variable called `myFavoritePolygon` and assign it to one of the shapes above, then print out how many sides it has.
+
+```swift
+var sidesTheShapeHas = 0
+
+enum Shape {
+case triangle(Int)
+case rectangle(Int)
+case square(Int)
+case pentagon(Int)
+case hexagon(Int)
+
+    func returnsNumberOfSides(x: Shape) -> Int {
+        switch self {
+        case .triangle:
+            sidesTheShapeHas = 3
+            print(3)
+        case .rectangle:
+            sidesTheShapeHas = 4
+            print(4)
+        case .square:
+            sidesTheShapeHas = 4
+            print(4)
+        case .pentagon:
+            sidesTheShapeHas = 5
+            print(5)
+        case .hexagon:
+            sidesTheShapeHas = 6
+            print(6)
+
+        return sidesTheShapeHas
+        }
+    }
+}
+
+let myFavoritePolygon = Shape.triangle(3)
+print(myFavoritePolygon)
+```
 
 c) Re-write `Shape` so that each case has an associated value of type Int that will represent the length of the sides (assume the shapes are regular polygons so all the sides are the same length) and write a method inside that returns the perimeter of the shape.
 
